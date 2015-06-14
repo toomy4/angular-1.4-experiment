@@ -1,0 +1,55 @@
+@header-height: 64px;
+@footer-height: 25px;
+
+body {
+  min-height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+[wrap] {
+  padding: @header-height 0 @footer-height 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+[layout-main] {
+  min-height: 100% !important;
+  max-height: 100% !important;
+}
+
+[header] {
+  margin-top: -@header-height;
+  height: @header-height;
+}
+
+[footer] {
+  text-align: center;
+  margin-bottom: -@footer-height;
+  height: @footer-height;
+}
+
+@media (min-width: 960px), print {
+  [wrap] {
+    width: 960px !important;
+    margin: 0px auto !important;
+    outline: ridge lightgray;
+  }
+}
+
+
+// ng-material overrides/style fixes
+
+md-backdrop {
+  top: 0;
+}
+[layout-fill] {
+  height: auto !important;
+}

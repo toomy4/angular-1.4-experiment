@@ -1,0 +1,9 @@
+// Created by Toomy on 31.05.2015.
+
+md-grid-list(
+md-gutter="4px", md-gutter-gt-sm="8px", md-row-height="4:3", md-row-height-gt-md="1:1",
+md-cols-lt-sm="1", md-cols-sm="2", md-cols-md="3", md-cols-gt-md="3", role="list"
+)
+    md-grid-tile(ng-repeat="box in vm.data track by $index", class="md-whiteframe-z1", md-rowspan="{{box.h}}", md-colspan="{{box.w}}")
+        | box {{$index}}
+

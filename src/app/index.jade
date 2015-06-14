@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+html
+    head
+        title Looking for something? Well it ain't here...
+        base(href="/app/1.0/")
+        meta(name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no")
+
+        style(type="text/css")
+            | [ng-cloak] * {display: none;}
+            | [ng-cloak] noscript {display:block;}
+            | div.loading {display:none;}
+            | [ng-cloak] div.loading {display:block;}
+
+        script(async, src="boot.js")
+    body(ng-cloak)
+        noscript(ng-if="false")
+            h1 Javascript is required for this site
+
+        div(class="loading", ng-if="false")
+            | Loading the application, please wait <br/>
+
+        div(ng-controller="MainController", layout="column", layout-fill, md-theme="{{vm.theme.theme}}", wrap)
+            md-toolbar(header, layout="row")
+                div(class="md-toolbar-tools")
+                    md-icon(class="no-margin", hide-gt-md, md-svg-src="img/icons/ic_menu_24px.svg", ng-click="vm.menu.toggle()", aria-label="Toggle side menu")
+
+            div(layout-fill, layout-main,  layout="row")
+                md-sidenav(md-is-locked-open="$mdMedia('gt-md')", md-is-open="vm.menu.show", class="md-whiteframe-z1", ng-class="'md-'+vm.theme.theme+'-theme'", layout="column", layout-fill, role="navigation")
+                    md-content(layout-fill, layout="column", class="md-padding")
+                        md-select(ng-model="vm.theme.theme")
+                            md-option(ng-repeat="theme in vm.theme.themes", ng-value="theme", ng-bind="'Theme: ' + theme")
+
+                        side-menu(toggle="vm.menu")
+                            | side-menu broke
+
+                md-content(layout-fill, class="md-padding md-whiteframe-z1", role="main")
+                    ng-view
+
+
+            md-content(footer, class="md-whiteframe-z1")
+                | Copyright Toomy

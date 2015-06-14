@@ -1,0 +1,19 @@
+// Created by Toomy on 23.03.2015.
+div(ng-repeat="x in [1,2,3,4,5]")
+    | content repeat nr {{x}}
+    br
+    | controller body:
+    div(ng-repeat="d in vm.data")
+        | {{d}}
+    br
+    br
+    | element directive:
+    test-directive(data="vm.data")
+        | test directive broke
+
+    br
+    br
+    | attribute directive:
+    div(test-directive, data="vm.data")
+        | test directive broke
+
